@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2019-01-27T05:52:45Z" name="Default suite" finished-at="2019-01-27T05:54:37Z" duration-ms="112363">
+    <groups>
+    </groups>
+    <test started-at="2019-01-27T05:52:45Z" name="Default test" finished-at="2019-01-27T05:54:37Z" duration-ms="112363">
+      <class name="MercuryData.Test6">
+        <test-method signature="DatadrivenTest()[pri:0, instance:MercuryData.Test6@7770f470]" started-at="2019-01-27T05:52:45Z" name="DatadrivenTest" finished-at="2019-01-27T05:54:37Z" duration-ms="112277" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DatadrivenTest -->
+      </class> <!-- MercuryData.Test6 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
