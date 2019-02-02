@@ -1,4 +1,4 @@
-package MercuryData;
+package LG;
 
 
 import org.openqa.selenium.WebDriver;
@@ -44,17 +44,6 @@ public static String MFFPage_SelectFlightImg ="//img[ @src='/images/masts/mast_f
 
 //starts Mercury Select Flight Page by Sudhakar Date:12-Jan-2018
 public static String SFPage_SelectFlightImg ="//img[ @src='/images/masts/mast_selectflight.gif' and @width='492' and @height='30']";
-public static String SFPage_Continue_Click ="//input[@name='reserveFlights']";
 //End Mercury Select Flight Page 
-
-public static String BookFlightPage_FirstName ="//*[@name='passFirst0']";
-
-
-public static String BookFlightPage_lastName ="//input[@name='passLast0']";
-public static String BookFlightPage_meal1 ="//select[@name='pass.0.meal']";
-public static String BookFlightPage_CardName ="//select[@name='creditCard']";
-public static String BookFlightPage_CardNumber ="//input[@name='creditnumber']";
-public static String BookFlightPage_expirymonth="//select [@name='cc_exp_dt_mn']";
-public static String BookFlightPage_expiryyear="//select [@name='cc_exp_dt_yr']";
 
 }

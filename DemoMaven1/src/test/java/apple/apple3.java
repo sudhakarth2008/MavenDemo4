@@ -1,11 +1,10 @@
-package MercuryData;
 //import MercuryDemoTours;
 
+package  apple;
 
 import org.testng.annotations.Test;
-import DataProviderTest.ExcelApiTest3;
 
-import subha.Facebook2;
+import DataProviderTest.ExcelApiTest3;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeTest;
@@ -71,95 +70,70 @@ import java.net.MalformedURLException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.util.*;
  
-public class Test5
+public class apple3
 {
-
-	public static WebDriver driver ; 
-	public static String driverPath = "C:\\Users\\sudhakar\\Desktop\\seleni\\chromedriver_win32\\chromedriver.exe";
-	public static String baseUrl = "http://www.newtours.demoaut.com/";
-	
-	public static String UserName,Password;
-	
-	 
+	//public static WebDriver driver ; 
 	 @Test
 	 public static void DatadrivenTest()throws Exception
 	 {
 		 ExcelApiTest3 eat = new ExcelApiTest3();
-		 int numberowsInputdata=eat.getRowCount("E://TC16.xls","Sheet1");
+		 int numberowsInputdata=eat.getRowCount("E://TC25.xls","Sheet1");
+		 
+		
 
 		 for(int i=1;i<numberowsInputdata;i++)
 		 {	 
-			   Test5.UserName=eat.getCellData("E://TC16.xls","Sheet1",i,0);
-			   Test5.Password=eat.getCellData("E://TC16.xls","Sheet1",i,1);	 	
-			   Test5.allmethods();	
+			 apple1.UserName=eat.getCellData("E://TC25.xls","Sheet1",i,0);
+			 apple1.Password=eat.getCellData("E://TC25.xls","Sheet1",i,1);	
+			
+			   
+			   apple2.PassengersCount=eat.getCellData("E://TC25.xls","Sheet1",i,2);	
+			   apple2.DepartingFrom=eat.getCellData("E://TC25.xls","Sheet1",i,3);	
+			   apple2.DepartingStartMonth=eat.getCellData("E://TC25.xls","Sheet1",i,4);	
+			   apple2.DepartingStartDate=eat.getCellData("E://TC25.xls","Sheet1",i,5);	
+			   apple2.ArrivingIn=eat.getCellData("E://TC25.xls","Sheet1",i,6);	
+			   apple2.ReturningEndMonth=eat.getCellData("E://TC25.xls","Sheet1",i,7);	
+			   apple2.ReturningEndDate=eat.getCellData("E://TC25.xls","Sheet1",i,8);	
+			   apple2.Airline=eat.getCellData("E://TC25.xls","Sheet1",i,9);	
+			   
+			   apple2.ServiceClass=eat.getCellData("E://TC25.xls","Sheet1",i,10);	
+			   System.out.println("apple2.ServiceClass value is :"+apple2.ServiceClass);
+			   
+			   apple2.Radiobutton=eat.getCellData("E://TC25.xls","Sheet1",i,11); 
+			     System.out.println("apple2.Radiobutton value is  :"+apple2.Radiobutton);
+
+			   apple3.allmethods();	
 		 }
 	 		 
 	 }
 	 
+	
+	 
+public static void allmethods()throws Exception
+{
+			 apple1.openBrowser();
+			 apple1.mercurylogin(apple1.UserName,apple1.Password);
+		 
+	 		 apple2.MerucryFlightFinderBusiness(apple2.PassengersCount,apple2.DepartingFrom,
+			 apple2.DepartingStartMonth,apple2.DepartingStartDate,apple2.ArrivingIn,
+			 apple2.ReturningEndMonth,apple2.ReturningEndDate,apple2.Airline,apple2.Radiobutton,apple2.ServiceClass);
+		 
+		 apple3.Page7();
+		 apple1.CloseBrowser();
+		 
+}	 
 	 
 	 
-	 
-	 
-	 public static void allmethods()throws Exception
-	 {
-		 Test5.openBrowser();
-		 Test5.mercurylogin(Test5.UserName,Test5.Password);
-		 Test5.CloseBrowser();
-		 
-	 }
-	
-		 //driver.quit();
-		 public static void openBrowser()throws Exception
-		 {
-			 ChromeOptions options = new ChromeOptions();
-			 options.addArguments("--disable-notifications");
-			 System.setProperty("webdriver.chrome.driver",driverPath);
-			 Test5.driver = new ChromeDriver(options); 
-			 Test5.driver.manage().window().maximize() ;	
-			 Test5.driver.get(baseUrl);
-			
-		 }
-		 
-		 public static void mercurylogin(String Username,String Password)throws Exception
-		 {
-			 
-			 //Test5.UserName=Username;
-			// Test5.Password=Password;
-			 
-	
-			 Test5.driver.findElement(By.xpath(OR.MLPage_UserNameTextbox)).sendKeys(UserName);
-			 Test5.driver.findElement(By.xpath(OR.MLPage_PasswordTextbox)).sendKeys(Password);
-			
-			 Test5.driver.findElement(By.xpath(OR.MLPage_SignInButton)).click();
-			 Test5.wait5seconds();
-		 }
-		
-		 public static void wait5seconds() throws Exception
-		 {
-			 try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-							e.printStackTrace();
-				}
-		 }
-		 
+
+public static void Page7()throws Exception
+{
 	
 	
-		 
-		 public static void CloseBrowser() throws Exception
-		 {
-			 Test5.wait5seconds();
-			 Test5.driver.quit();
-		 }
-		 
-			
-			 
-			 
+	apple1.driver.findElement(By.xpath(OR.SFPage_Continue_Click)).click();
+	//apple1.driver.findElement(By.xpath(OR.SFPage_SelectFlightImg)).click();
+
 }
 
-			 
-			 
-			
-					 
-
-				 
+					  
+	
+}

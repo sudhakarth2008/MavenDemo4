@@ -1,4 +1,4 @@
-package MercuryData;
+package apple;
 
 
 import org.openqa.selenium.WebDriver;
@@ -24,8 +24,11 @@ public static String MLPage_SignInButton="//*[@name='login']";
 
 
 //Starts MercuryFlightFinderPage by Sudhakar Date:12-Jan-2018
-public static String MFFPage_RoundTripRadiobutton="//input[@type='radio'and @name='tripType' and @value='oneway' ]";
-public static String MFFPage_OneWayRadiobutton="//input[@type='radio'and @name='tripType' and @value='roundtrip' ]";
+public static String MFFPage_OneWayRadiobutton="//input[@type='radio'and @name='tripType' and @value='oneway' ]";
+public static String MFFPage_RoundTripRadiobutton="//input[@type='radio'and @name='tripType' and @value='roundtrip' ]";
+
+
+
 public static String MFFPage_PassengersCountListbox="//select[@name='passCount']";
 public static String MFFPage_DepartingFromListbox="//select[@name='fromPort']";
 public static String MFFPage_DepartingStartMonthListbox="//select[@name='fromMonth']";
@@ -56,5 +59,16 @@ public static String BookFlightPage_CardName ="//select[@name='creditCard']";
 public static String BookFlightPage_CardNumber ="//input[@name='creditnumber']";
 public static String BookFlightPage_expirymonth="//select [@name='cc_exp_dt_mn']";
 public static String BookFlightPage_expiryyear="//select [@name='cc_exp_dt_yr']";
+
+
+
+
+public static String Output_FlightConfirmation_Number = "(.//*[normalize-space(text()) and normalize-space(.)='CONTACT'])[1]/following::font[6]";
+public static String Output_FlightBookingDate_Time="(.//*[normalize-space(text()) and normalize-space(.)='Departing'])[1]/preceding::b[1]";
+public static String Output_DepartingDetails= "(.//*[normalize-space(text()) and normalize-space(.)='Departing'])[1]/following::td[1]";
+
+
+
+
 
 }

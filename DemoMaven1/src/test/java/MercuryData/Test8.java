@@ -54,8 +54,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -69,22 +67,17 @@ import java.net.MalformedURLException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.util.*;
  
-public class Test6
+public class Test8
 {
 	
+	public static String FirstName,lastName,meal1,CardName,CardNumber,expirymonth,expiryyear;	
 	
-	public static String PassengersCount,DepartingFrom,DepartingStartMonth,
-	DepartingStartDate,ArrivingIn,ReturningEndMonth,ReturningEndDate,Airline,SericeClass;
-
-	
-	 @Test
+	@Test
 	 public static void DatadrivenTest()throws Exception
 	 {
 		 ExcelApiTest3 eat = new ExcelApiTest3();
 		 int numberowsInputdata=eat.getRowCount("E://TC21.xls","Sheet1");
 		 
-		
-
 		 for(int i=1;i<numberowsInputdata;i++)
 		 {	 
 			   Test5.UserName=eat.getCellData("E://TC21.xls","Sheet1",i,0);
@@ -100,116 +93,71 @@ public class Test6
 			   Test6.Airline=eat.getCellData("E://TC21.xls","Sheet1",i,9);	
 			   
 			   Test6.SericeClass=eat.getCellData("E://TC21.xls","Sheet1",i,10);	
-
-			   Test6.allmethods();	
+			   
+			   
+			   Test8.FirstName=eat.getCellData("E://TC21.xls","Sheet1",i,11);
+			   Test8.lastName=eat.getCellData("E://TC21.xls","Sheet1",i,12);
+			   Test8.CardName=eat.getCellData("E://TC21.xls","Sheet1",i,13);
+			   Test8.CardNumber=eat.getCellData("E://TC21.xls","Sheet1",i,14);
+			   Test8.meal1=eat.getCellData("E://TC21.xls","Sheet1",i,15);
+			   Test8.expirymonth=eat.getCellData("E://TC21.xls","Sheet1",i,16);
+			   Test8.expiryyear=eat.getCellData("E://TC21.xls","Sheet1",i,17);
+			   
+			   Test8.allmethods();	
 		 }
 	 		 
 	 }
 	 
 	
-
-	 
 	 
 public static void allmethods()throws Exception
 {
 		 Test5.openBrowser();
-		 
 		 Test5.mercurylogin(Test5.UserName,Test5.Password);
-		 
+				 
 		 Test6.MerucryFlightFinderBusiness(Test6.PassengersCount,Test6.DepartingFrom,
 				 Test6.DepartingStartMonth,Test6.DepartingStartDate,Test6.ArrivingIn,
 				 Test6.ReturningEndMonth,Test6.ReturningEndDate,Test6.Airline,Test6.SericeClass);
+		
+		 Test7.Page7();
+		 Test8.Page8(Test8.FirstName,Test8.lastName,Test8.meal1,Test8.CardName,Test8.CardNumber,Test8.expirymonth,Test8.expiryyear);
 		 
-		 Test5.CloseBrowser();
-		 
+		 Test5.CloseBrowser(); 
 }	 
 	 
 	 
-	 
-	 
-public static void MerucryFlightFinderBusiness(String PassengersCount,String DepartingFrom,
-		String DepartingStartMonth,String DepartingStartDate,String ArrivingIn,
-		String ReturningEndMonth,String ReturningEndDate,String Airline,String SericeClass ) throws Exception
+
+public static void Page8(String FirstName,String lastName,String meal1,String CardName,String CardNumber,String expirymonth,String expiryyear)throws Exception
 {
 	
 	
+	Test5.driver.findElement(By.xpath(OR.BookFlightPage_FirstName)).sendKeys(FirstName);
 	
-	   /*Test6.PassengersCount=	PassengersCount;
-	   Test6.DepartingFrom=	DepartingFrom;
-	   Test6.DepartingStartMonth= DepartingStartMonth;
-	   Test6.DepartingStartDate=	DepartingStartDate;
-	   Test6.ArrivingIn=	ArrivingIn;
-	   Test6.ReturningEndMonth=	 ReturningEndMonth;
-	   Test6.ReturningEndDate= ReturningEndDate;
-	   Test6.Airline=	Airline;*/
-	 
+	Test5.driver.findElement(By.xpath(OR.BookFlightPage_lastName)).sendKeys(lastName);
+	Select listbox9 =new Select(Test5.driver.
+	findElement(By.xpath(OR.BookFlightPage_meal1)));
 	
+	listbox9.selectByVisibleText(meal1);
+			
+	Select listbox8 =new Select(Test5.driver.
+	findElement(By.xpath(OR.BookFlightPage_CardName)));
 	
+	listbox8.selectByVisibleText(CardName);
+			
+	Test5.driver.findElement(By.xpath(OR.BookFlightPage_CardNumber)).sendKeys(CardNumber);
 	
-	Test5.driver.findElement(By.xpath(OR.MFFPage_OneWayRadiobutton)).click();
-
-	Select listbox =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_PassengersCountListbox)));
-	//listbox.selectByVisibleText("2");
-	listbox.selectByVisibleText(PassengersCount);
+	Select listbox10 =new Select(Test5.driver.
+	findElement(By.xpath(OR.BookFlightPage_expirymonth)));
 	
+	listbox10.selectByVisibleText(expirymonth);
+			
+	Select listbox11 =new Select(Test5.driver.
+	findElement(By.xpath(OR.BookFlightPage_expiryyear)));
+			
+	listbox11.selectByVisibleText(expiryyear);
 	
-	Select listbox1 =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_DepartingFromListbox)));
-    //listbox1.selectByVisibleText("London");
-    listbox1.selectByVisibleText(DepartingFrom);
-    
-		
-	Select listbox2 =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_DepartingStartMonthListbox)));
-	//listbox2.selectByVisibleText("February");
-	listbox2.selectByVisibleText(DepartingStartMonth);
-		
-	Select listbox3 =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_DepartingStartDateListbox)));
-	listbox3.selectByVisibleText(DepartingStartDate);
-				
-	Select listbox4 =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_ArrivingIn)));
-	listbox4.selectByVisibleText(ArrivingIn);	
-	
-	Select listbox5 =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_ReturningEndMonthListbox)));
-	listbox5.selectByVisibleText( ReturningEndMonth);
-				
-	Select listbox6 =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_ReturningEndDateListbox)));
-	listbox6.selectByVisibleText(ReturningEndDate);
-	
-	if (SericeClass.equals("First"))
-	{
-		Test5.driver.findElement(By.xpath(OR.MFFPage_FirstClassRadioButton)).click();
-	}
-	
-	if (SericeClass.equals("Business"))
-	{
-		Test5.driver.findElement(By.xpath(OR.MFFPage_BusinessclassRadioButton)).click();
-	}
-	
-	if (SericeClass.equals("Economy"))
-	{
-		Test5.driver.findElement(By.xpath(OR.MFFPage_EconomyclassRadioButton)).click();
-	}
-	
-
-	
-	Select listbox7 =new Select(Test5.driver.
-	findElement(By.xpath(OR.MFFPage_AirLineListbox)));
-	listbox7.selectByVisibleText(Airline);
-	
-	
-	
-	Test5.driver.findElement(By.xpath(OR.MFFPage_ContinueButton)).click();
 	
 }
-			  	  
-
-
 
 					  
 	

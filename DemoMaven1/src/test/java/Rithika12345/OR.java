@@ -4,13 +4,11 @@ import org.openqa.selenium.WebDriver;
 
 public class OR {
 	
-	public static String  email="//input[@type='email' and @name='email']";
+	public static String custmoresell_click="//a[@class='nav-a'and @tabindex='24']";
+	
+	public static String  tryprime_specialelement="//a[class='nav-text']";
+	
+			
 	
 	
-	public static String  youramazonin_click="//a[@id='nav-your-amazon']";
-	
-	public static String  todaydeals_click="//div[@id='nav-xshop']";
-	
-	
-		
 }

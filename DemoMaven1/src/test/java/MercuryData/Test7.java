@@ -1,11 +1,9 @@
-package MercuryData;
 //import MercuryDemoTours;
 
-
+package  MercuryData;
 import org.testng.annotations.Test;
-import DataProviderTest.ExcelApiTest3;
 
-import subha.Facebook2;
+import DataProviderTest.ExcelApiTest3;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeTest;
@@ -71,95 +69,63 @@ import java.net.MalformedURLException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.util.*;
  
-public class Test5
+public class Test7
 {
-
-	public static WebDriver driver ; 
-	public static String driverPath = "C:\\Users\\sudhakar\\Desktop\\seleni\\chromedriver_win32\\chromedriver.exe";
-	public static String baseUrl = "http://www.newtours.demoaut.com/";
-	
-	public static String UserName,Password;
-	
-	 
+	//public static WebDriver driver ; 
 	 @Test
 	 public static void DatadrivenTest()throws Exception
 	 {
 		 ExcelApiTest3 eat = new ExcelApiTest3();
-		 int numberowsInputdata=eat.getRowCount("E://TC16.xls","Sheet1");
+		 int numberowsInputdata=eat.getRowCount("E://TC21.xls","Sheet1");
+		 
+		
 
 		 for(int i=1;i<numberowsInputdata;i++)
 		 {	 
-			   Test5.UserName=eat.getCellData("E://TC16.xls","Sheet1",i,0);
-			   Test5.Password=eat.getCellData("E://TC16.xls","Sheet1",i,1);	 	
-			   Test5.allmethods();	
+			   Test5.UserName=eat.getCellData("E://TC21.xls","Sheet1",i,0);
+			   Test5.Password=eat.getCellData("E://TC21.xls","Sheet1",i,1);	 	
+			   
+			   Test6.PassengersCount=eat.getCellData("E://TC21.xls","Sheet1",i,2);	
+			   Test6.DepartingFrom=eat.getCellData("E://TC21.xls","Sheet1",i,3);	
+			   Test6.DepartingStartMonth=eat.getCellData("E://TC21.xls","Sheet1",i,4);	
+			   Test6.DepartingStartDate=eat.getCellData("E://TC21.xls","Sheet1",i,5);	
+			   Test6.ArrivingIn=eat.getCellData("E://TC21.xls","Sheet1",i,6);	
+			   Test6.ReturningEndMonth=eat.getCellData("E://TC21.xls","Sheet1",i,7);	
+			   Test6.ReturningEndDate=eat.getCellData("E://TC21.xls","Sheet1",i,8);	
+			   Test6.Airline=eat.getCellData("E://TC21.xls","Sheet1",i,9);	
+
+			   Test7.allmethods();	
 		 }
 	 		 
 	 }
 	 
+	
 	 
-	 
-	 
-	 
-	 public static void allmethods()throws Exception
-	 {
+public static void allmethods()throws Exception
+{
 		 Test5.openBrowser();
 		 Test5.mercurylogin(Test5.UserName,Test5.Password);
+		 
+		 Test6.MerucryFlightFinderBusiness(Test6.PassengersCount,Test6.DepartingFrom,
+				 Test6.DepartingStartMonth,Test6.DepartingStartDate,Test6.ArrivingIn,
+				 Test6.ReturningEndMonth,Test6.ReturningEndDate,Test6.Airline,Test6.SericeClass);
+		 
+		 Test7.Page7();
 		 Test5.CloseBrowser();
 		 
-	 }
-	
-		 //driver.quit();
-		 public static void openBrowser()throws Exception
-		 {
-			 ChromeOptions options = new ChromeOptions();
-			 options.addArguments("--disable-notifications");
-			 System.setProperty("webdriver.chrome.driver",driverPath);
-			 Test5.driver = new ChromeDriver(options); 
-			 Test5.driver.manage().window().maximize() ;	
-			 Test5.driver.get(baseUrl);
-			
-		 }
-		 
-		 public static void mercurylogin(String Username,String Password)throws Exception
-		 {
-			 
-			 //Test5.UserName=Username;
-			// Test5.Password=Password;
-			 
-	
-			 Test5.driver.findElement(By.xpath(OR.MLPage_UserNameTextbox)).sendKeys(UserName);
-			 Test5.driver.findElement(By.xpath(OR.MLPage_PasswordTextbox)).sendKeys(Password);
-			
-			 Test5.driver.findElement(By.xpath(OR.MLPage_SignInButton)).click();
-			 Test5.wait5seconds();
-		 }
-		
-		 public static void wait5seconds() throws Exception
-		 {
-			 try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-							e.printStackTrace();
-				}
-		 }
-		 
+}	 
+	 
+	 
+
+public static void Page7()throws Exception
+{
 	
 	
-		 
-		 public static void CloseBrowser() throws Exception
-		 {
-			 Test5.wait5seconds();
-			 Test5.driver.quit();
-		 }
-		 
-			
-			 
-			 
+	Test5.driver.findElement(By.xpath(OR.SFPage_Continue_Click)).click();
+	
+
 }
 
-			 
-			 
-			
-					 
-
-				 
+					  
+	
+}

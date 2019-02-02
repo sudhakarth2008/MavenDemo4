@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="MercuryData.Test6">
+      <class name="MercuryData.Test8">
         <methods>
           <include name="DatadrivenTest"/>
         </methods>
-      </class> <!-- MercuryData.Test6 -->
+      </class> <!-- MercuryData.Test8 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

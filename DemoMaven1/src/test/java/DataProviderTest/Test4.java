@@ -67,7 +67,8 @@ public class Test4
 {
 
 	public static WebDriver driver ; 
-	public static String driverPath = "C:\\Users\\sudhakar\\Desktop\\seleni\\chromedriver_win32\\chromedriver.exe";
+	public static String driverPath = "C:\\Users\\sudhakar\\Desktop\\"
+			+ "seleni\\chromedriver_win32\\chromedriver.exe";
 	public static String baseUrl = "http://www.newtours.demoaut.com/";
 
 	 public static String UserName,Password;
@@ -75,26 +76,23 @@ public class Test4
 	 public static int numofrows;
 	 
 	 
-	 @Test(dependsOnMethods={"Authentication1"})
-	 public static void execute_allmethbods() throws Exception
-	 {
+@Test(dependsOnMethods={"Authentication1"})
+public static void execute_allmethbods() throws Exception
+{
 		 
-		  System.out.println("Authentication1()");
-		
-		 
-	 }
+		  System.out.println("Authentication1()");		 
+}
 	
-	 @Test(dataProvider="Authentication1")
-	 public static void Authentication1(String sTestCaseName,String sUserName,String sPassword) throws Exception
-		{
-			
+@Test(dataProvider="Authentication1")
+public static void Authentication1(String sTestCaseName,
+		String sUserName,String sPassword) throws Exception
+{
 			System.out.println(sTestCaseName); 
 			Test2.openBrowser();
 			Test2.mercurylogin(sUserName,sPassword);
 			driver=OR3.driver;
 			driver.quit();
-			
-		}
+}
 		
 	
 	
@@ -102,9 +100,9 @@ public class Test4
 	 
 	    public static  Object[][] Authentication1() throws Exception{
 		 
-		// ExcelApiTest3 eat= new ExcelApiTest3();
-	 
-	         Object[][] testObjArray = ExcelApiTest3.getTableArray("E://Batch2Source//TestData.xls","Sheet1");
+		
+		 Object[][] testObjArray = ExcelApiTest3.getTableArray
+				 ("E://Batch2Source//TestData.xls","Sheet1");
 	        
 	         System.out.println(testObjArray.length);
 	         

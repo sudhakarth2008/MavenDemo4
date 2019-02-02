@@ -1,6 +1,6 @@
 //import MercuryDemoTours;
 
-package  MercuryData;
+package  LG;
 import org.testng.annotations.Test;
 
 import DataProviderTest.ExcelApiTest3;
@@ -71,21 +71,19 @@ import java.util.*;
  
 public class Test6
 {
-	
+	//public static WebDriver driver ; 
 	
 	public static String PassengersCount,DepartingFrom,DepartingStartMonth,
-	DepartingStartDate,ArrivingIn,ReturningEndMonth,ReturningEndDate,Airline,SericeClass;
+	DepartingStartDate,ArrivingIn,ReturningEndMonth,ReturningEndDate,Airline;
 
 	
 	 @Test
 	 public static void DatadrivenTest()throws Exception
 	 {
 		 ExcelApiTest3 eat = new ExcelApiTest3();
-		 int numberowsInputdata=eat.getRowCount("E://TC21.xls","Sheet1");
-		 
-		
+		 int numberrowsInputdata=eat.getRowCount("E://TC21.xls","Sheet1");
 
-		 for(int i=1;i<numberowsInputdata;i++)
+		 for(int i=1;i<numberrowsInputdata;i++)
 		 {	 
 			   Test5.UserName=eat.getCellData("E://TC21.xls","Sheet1",i,0);
 			   Test5.Password=eat.getCellData("E://TC21.xls","Sheet1",i,1);	 	
@@ -99,7 +97,7 @@ public class Test6
 			   Test6.ReturningEndDate=eat.getCellData("E://TC21.xls","Sheet1",i,8);	
 			   Test6.Airline=eat.getCellData("E://TC21.xls","Sheet1",i,9);	
 			   
-			   Test6.SericeClass=eat.getCellData("E://TC21.xls","Sheet1",i,10);	
+			   
 
 			   Test6.allmethods();	
 		 }
@@ -113,13 +111,8 @@ public class Test6
 public static void allmethods()throws Exception
 {
 		 Test5.openBrowser();
-		 
 		 Test5.mercurylogin(Test5.UserName,Test5.Password);
-		 
-		 Test6.MerucryFlightFinderBusiness(Test6.PassengersCount,Test6.DepartingFrom,
-				 Test6.DepartingStartMonth,Test6.DepartingStartDate,Test6.ArrivingIn,
-				 Test6.ReturningEndMonth,Test6.ReturningEndDate,Test6.Airline,Test6.SericeClass);
-		 
+		 Test6.MerucryFlightFinderBusiness(Test6.PassengersCount,Test6.DepartingFrom,Test6.DepartingStartMonth,Test6.DepartingStartDate,Test6.ArrivingIn,Test6.ReturningEndMonth,Test6.ReturningEndDate,Test6.Airline);
 		 Test5.CloseBrowser();
 		 
 }	 
@@ -127,22 +120,19 @@ public static void allmethods()throws Exception
 	 
 	 
 	 
-public static void MerucryFlightFinderBusiness(String PassengersCount,String DepartingFrom,
-		String DepartingStartMonth,String DepartingStartDate,String ArrivingIn,
-		String ReturningEndMonth,String ReturningEndDate,String Airline,String SericeClass ) throws Exception
+public static void MerucryFlightFinderBusiness(String PassengersCount,String DepartingFrom,String DepartingStartMonth,
+		String DepartingStartDate,String ArrivingIn,String ReturningEndMonth,String ReturningEndDate,String Airline) throws Exception
 {
 	
 	
-	
-	   /*Test6.PassengersCount=	PassengersCount;
-	   Test6.DepartingFrom=	DepartingFrom;
-	   Test6.DepartingStartMonth= DepartingStartMonth;
-	   Test6.DepartingStartDate=	DepartingStartDate;
-	   Test6.ArrivingIn=	ArrivingIn;
-	   Test6.ReturningEndMonth=	 ReturningEndMonth;
-	   Test6.ReturningEndDate= ReturningEndDate;
-	   Test6.Airline=	Airline;*/
-	 
+	Test6.PassengersCount=PassengersCount;
+	Test6.DepartingFrom=DepartingFrom;
+	Test6.DepartingStartMonth=DepartingStartMonth;
+	Test6.DepartingStartDate=DepartingStartDate;
+	Test6.ArrivingIn=ArrivingIn;
+	Test6.ReturningEndMonth=ReturningEndMonth;
+	Test6.ReturningEndDate=ReturningEndDate;
+	Test6.Airline=Airline;
 	
 	
 	
@@ -151,56 +141,41 @@ public static void MerucryFlightFinderBusiness(String PassengersCount,String Dep
 	Select listbox =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_PassengersCountListbox)));
 	//listbox.selectByVisibleText("2");
-	listbox.selectByVisibleText(PassengersCount);
+	listbox.selectByVisibleText(Test6.PassengersCount);
 	
 	
 	Select listbox1 =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_DepartingFromListbox)));
     //listbox1.selectByVisibleText("London");
-    listbox1.selectByVisibleText(DepartingFrom);
+    listbox1.selectByVisibleText(Test6.DepartingFrom);
     
 		
 	Select listbox2 =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_DepartingStartMonthListbox)));
 	//listbox2.selectByVisibleText("February");
-	listbox2.selectByVisibleText(DepartingStartMonth);
+	listbox2.selectByVisibleText(Test6.DepartingStartMonth);
 		
 	Select listbox3 =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_DepartingStartDateListbox)));
-	listbox3.selectByVisibleText(DepartingStartDate);
+	listbox3.selectByVisibleText(Test6.DepartingStartDate);
 				
 	Select listbox4 =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_ArrivingIn)));
-	listbox4.selectByVisibleText(ArrivingIn);	
+	listbox4.selectByVisibleText(Test6.ArrivingIn);	
 	
 	Select listbox5 =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_ReturningEndMonthListbox)));
-	listbox5.selectByVisibleText( ReturningEndMonth);
+	listbox5.selectByVisibleText( Test6.ReturningEndMonth);
 				
 	Select listbox6 =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_ReturningEndDateListbox)));
-	listbox6.selectByVisibleText(ReturningEndDate);
+	listbox6.selectByVisibleText(Test6.ReturningEndDate);
 	
-	if (SericeClass.equals("First"))
-	{
-		Test5.driver.findElement(By.xpath(OR.MFFPage_FirstClassRadioButton)).click();
-	}
-	
-	if (SericeClass.equals("Business"))
-	{
-		Test5.driver.findElement(By.xpath(OR.MFFPage_BusinessclassRadioButton)).click();
-	}
-	
-	if (SericeClass.equals("Economy"))
-	{
-		Test5.driver.findElement(By.xpath(OR.MFFPage_EconomyclassRadioButton)).click();
-	}
-	
-
+	Test5.driver.findElement(By.xpath(OR.MFFPage_BusinessclassRadioButton)).click();
 	
 	Select listbox7 =new Select(Test5.driver.
 	findElement(By.xpath(OR.MFFPage_AirLineListbox)));
-	listbox7.selectByVisibleText(Airline);
+	listbox7.selectByVisibleText(Test6.Airline);
 	
 	
 	

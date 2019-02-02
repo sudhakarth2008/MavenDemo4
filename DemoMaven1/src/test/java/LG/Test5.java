@@ -1,4 +1,4 @@
-package MercuryData;
+package LG;
 //import MercuryDemoTours;
 
 
@@ -114,7 +114,7 @@ public class Test5
 			 ChromeOptions options = new ChromeOptions();
 			 options.addArguments("--disable-notifications");
 			 System.setProperty("webdriver.chrome.driver",driverPath);
-			 Test5.driver = new ChromeDriver(options); 
+			 driver = new ChromeDriver(options); 
 			 Test5.driver.manage().window().maximize() ;	
 			 Test5.driver.get(baseUrl);
 			
@@ -123,12 +123,12 @@ public class Test5
 		 public static void mercurylogin(String Username,String Password)throws Exception
 		 {
 			 
-			 //Test5.UserName=Username;
-			// Test5.Password=Password;
+			 Test5.UserName=Username;
+			 Test5.Password=Password;
 			 
 	
-			 Test5.driver.findElement(By.xpath(OR.MLPage_UserNameTextbox)).sendKeys(UserName);
-			 Test5.driver.findElement(By.xpath(OR.MLPage_PasswordTextbox)).sendKeys(Password);
+			 Test5.driver.findElement(By.xpath(OR.MLPage_UserNameTextbox)).sendKeys(Test5.UserName);
+			 Test5.driver.findElement(By.xpath(OR.MLPage_PasswordTextbox)).sendKeys(Test5.Password);
 			
 			 Test5.driver.findElement(By.xpath(OR.MLPage_SignInButton)).click();
 			 Test5.wait5seconds();
@@ -149,7 +149,7 @@ public class Test5
 		 public static void CloseBrowser() throws Exception
 		 {
 			 Test5.wait5seconds();
-			 Test5.driver.quit();
+			 driver.quit();
 		 }
 		 
 			

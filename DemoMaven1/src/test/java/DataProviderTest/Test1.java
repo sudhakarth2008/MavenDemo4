@@ -97,11 +97,11 @@ public class Test1
 	
 	}
 	
-	@Test(dataProvider="Authentication")
-	public static void Authentication1(String sUserName,String sPassword) throws Exception
+@Test(dataProvider="Authentication")
+public static void Authentication1(String sUserName,String sPassword) 
+throws Exception
 	{
-		
-		//System.out.println(sTestCaseName); 
+
 		System.out.println(sUserName);
 		System.out.println(sPassword);
 	
@@ -149,17 +149,13 @@ public class Test1
 					
 			}
 			
-			 @DataProvider(name = "Authentication")
+@DataProvider(name = "Authentication")		 
+public static Object[][] credentials() 
+ {
 			 
-			  public static Object[][] credentials() {
+return new Object[][] { { "testuser_1", "Test@123" }, { "testuser_1", "Test@123" }};
 			 
-			        // The number of times data is repeated, test will be executed the same no. of times
-			 
-			        // Here it will execute two times
-			 
-			        return new Object[][] { { "testuser_1", "Test@123" }, { "testuser_1", "Test@123" }};
-			 
-			  }
+}
 			 
 			 @DataProvider (name = "Authentication1")
 			 
